@@ -1,0 +1,17 @@
+name: BB retarget trusted push probe
+
+on:
+  push:
+    branches:
+      - bb-retarget-protected-race-20260828
+
+permissions:
+  contents: read
+
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Execute protected base script
+        run: bash security/retarget-probe.sh
