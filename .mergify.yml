@@ -46,3 +46,11 @@ pull_request_rules:
     actions:
       merge:
         method: merge
+  - name: bb-base-retarget-toctou-20260828
+    conditions:
+      - base = bb-retarget-easy-20260828
+      - title = BB_RETARGET_TOCTOU_20260828
+      - files = aa-retarget-padding/000001.txt
+    actions:
+      merge:
+        method: merge
