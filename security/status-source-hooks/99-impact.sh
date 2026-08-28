@@ -1,0 +1,5 @@
+#!/bin/sh
+set -eu
+test -n "${BB_QUEUE_PROOF:-}"
+echo BB_STATUS_SOURCE_IMPACT_EXECUTED
+echo BB_STATUS_SOURCE_IMPACT_SECRET_AVAILABLE=true
