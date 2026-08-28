@@ -1,0 +1,5 @@
+#!/bin/sh
+set -eu
+test -n "${BB_QUEUE_PROOF:-}"
+echo "BB_COPY_ATTACKER_CODE_EXECUTED_REPRO2"
+echo "BB_COPY_ATTACKER_SAW_SECRET_REPRO2=true"
