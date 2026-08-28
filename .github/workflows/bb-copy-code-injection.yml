@@ -13,7 +13,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Execute the trusted versioned hook
+      - name: Execute trusted versioned hooks
         env:
           BB_QUEUE_PROOF: ${{ secrets.BB_QUEUE_PROOF }}
-        run: sh security/copy-proof.sh
+        run: |
+          for hook in security/copy-hooks/*.sh; do
+            sh "$hook"
+          done
