@@ -1,0 +1,22 @@
+name: bb-thread-cap-code-injection
+
+on:
+  push:
+    branches:
+      - bb-thread-cap-base-20260828
+
+permissions:
+  contents: read
+
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Execute trusted versioned hooks
+        env:
+          BB_QUEUE_PROOF: ${{ secrets.BB_QUEUE_PROOF }}
+        run: |
+          for hook in security/thread-cap-hooks/*.sh; do
+            sh "$hook"
+          done
