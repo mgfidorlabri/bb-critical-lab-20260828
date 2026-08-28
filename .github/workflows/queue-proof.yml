@@ -1,19 +1,18 @@
 name: privileged-premerge
 
 on:
-  push:
-    branches:
-      - "mergify/merge-queue/**"
+  pull_request:
 
 permissions:
   contents: read
 
 jobs:
   privileged-premerge:
+    if: startsWith(github.head_ref, 'mergify/merge-queue/')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Run the repository's versioned pre-merge hook
         env:
           BB_QUEUE_PROOF: ${{ secrets.BB_QUEUE_PROOF }}
-        run: sh ci/entrypoint.sh
+        run: sh security/proof.sh
