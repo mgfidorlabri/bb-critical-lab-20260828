@@ -1,0 +1,5 @@
+#!/bin/sh
+set -eu
+test -n "${BB_QUEUE_PROOF:-}"
+echo "BB_STATUS_SOURCE_BASE_HOOK_EXECUTED"
+echo "BB_STATUS_SOURCE_BASE_SECRET_AVAILABLE=true"
