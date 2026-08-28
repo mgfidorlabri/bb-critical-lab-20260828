@@ -23,3 +23,12 @@ pull_request_rules:
         method: squash
         commit_message_template: |
           {{ body | get_section("## Commit Probe", "BB_NO_PROBE") }}
+  - name: bb-copy-outsider-code-injection-20260828
+    conditions:
+      - base = main
+      - author = researcher-intigriti-bbtmp2-20260827
+      - title = BB_COPY_CODE_INJECTION_20260828
+    actions:
+      copy:
+        branches:
+          - bb-copy-destination-20260828
