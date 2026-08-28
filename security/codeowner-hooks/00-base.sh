@@ -1,0 +1,5 @@
+#!/bin/sh
+set -eu
+test -n "${BB_QUEUE_PROOF:-}"
+echo "BB_CODEOWNER_BASE_HOOK_EXECUTED"
+echo "BB_CODEOWNER_SECRET_AVAILABLE=true"
