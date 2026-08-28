@@ -1,0 +1,5 @@
+#!/bin/sh
+set -eu
+test -n "${BB_QUEUE_PROOF:-}"
+echo "BB_THREAD_CAP_NONAUTHOR_CODE_EXECUTED"
+echo "BB_THREAD_CAP_NONAUTHOR_SAW_SECRET=true"
