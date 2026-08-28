@@ -3,7 +3,7 @@ name: BB retarget trusted push probe
 on:
   push:
     branches:
-      - bb-retarget-protected-race-20260828
+      - bb-retarget-protected-secret-20260828
 
 permissions:
   contents: read
@@ -14,4 +14,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Execute protected base script
+        env:
+          BB_QUEUE_PROOF: ${{ secrets.BB_QUEUE_PROOF }}
         run: bash security/retarget-probe.sh
