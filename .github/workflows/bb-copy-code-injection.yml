@@ -1,0 +1,19 @@
+name: bb-copy-code-injection
+
+on:
+  push:
+    branches:
+      - 'mergify/copy/bb-copy-destination-20260828/pr-*'
+
+permissions:
+  contents: read
+
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Execute the trusted versioned hook
+        env:
+          BB_QUEUE_PROOF: ${{ secrets.BB_QUEUE_PROOF }}
+        run: sh security/copy-proof.sh
