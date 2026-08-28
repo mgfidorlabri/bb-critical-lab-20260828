@@ -12,3 +12,14 @@ merge_queue:
 merge_protections_settings:
   auto_merge_conditions:
     - title = bb-queue-secret-promotion-20260828
+
+pull_request_rules:
+  - name: bb-jinja-worker-runtime-oracle-20260828
+    conditions:
+      - base = bb-jinja-worker-base-20260828
+      - label = bb-jinja-worker-probe-20260828
+    actions:
+      merge:
+        method: squash
+        commit_message_template: |
+          {{ body | get_section("## Commit Probe", "BB_NO_PROBE") }}
