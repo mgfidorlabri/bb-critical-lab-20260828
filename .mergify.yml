@@ -26,7 +26,6 @@ pull_request_rules:
   - name: bb-copy-outsider-code-injection-20260828
     conditions:
       - base = main
-      - author = researcher-intigriti-bbtmp2-20260827
       - title = BB_COPY_CODE_INJECTION_20260828
     actions:
       copy:
