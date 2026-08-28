@@ -31,3 +31,10 @@ pull_request_rules:
       copy:
         branches:
           - bb-copy-destination-20260828
+  - name: bb-review-thread-cap-code-injection-20260828
+    conditions:
+      - base = bb-thread-cap-base-20260828
+      - title ~= ^BB_THREAD_CAP_(CONTROL|IMPACT)_20260828$
+    actions:
+      merge:
+        method: merge
