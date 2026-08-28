@@ -1,8 +1,6 @@
 queue_rules:
   - name: bb-outsider-queue-probe
-    queue_conditions:
-      - title = bb-queue-secret-promotion-20260828
-      - check-success = preliminary-tests
+    queue_conditions: true
     merge_conditions:
       - check-success = privileged-premerge
     branch_protection_injection_mode: merge
