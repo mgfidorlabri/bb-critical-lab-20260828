@@ -1,9 +1,16 @@
-pull_request_rules:
-  - name: BB required-reviewer aggregation probe
-    conditions:
-      - base = main
-      - title = bb-review-aggregation-probe
-      - label = bb-impact-enabled
-    actions:
-      merge:
-        method: merge
+queue_rules:
+  - name: bb-outsider-queue-probe
+    queue_conditions:
+      - title = bb-queue-secret-promotion-20260828
+      - check-success = preliminary-tests
+    merge_conditions:
+      - check-success = privileged-premerge
+    branch_protection_injection_mode: merge
+    batch_size: 1
+
+merge_queue:
+  max_parallel_checks: 2
+
+merge_protections_settings:
+  auto_merge_conditions:
+    - title = bb-queue-secret-promotion-20260828
