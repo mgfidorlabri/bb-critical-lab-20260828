@@ -1,0 +1,9 @@
+pull_request_rules:
+  - name: BB required-reviewer aggregation probe
+    conditions:
+      - base = main
+      - title = bb-review-aggregation-probe
+      - label = bb-impact-enabled
+    actions:
+      merge:
+        method: merge
