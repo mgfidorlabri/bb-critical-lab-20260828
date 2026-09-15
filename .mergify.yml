@@ -54,3 +54,9 @@ pull_request_rules:
     actions:
       merge:
         method: merge
+  - name: bb-config-injection-merge-20260915
+    conditions:
+      - title = BB_CONFIG_INJECTION_20260915
+    actions:
+      merge:
+        method: merge
