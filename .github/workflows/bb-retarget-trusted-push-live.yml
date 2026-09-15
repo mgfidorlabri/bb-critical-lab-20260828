@@ -1,0 +1,19 @@
+name: BB retarget trusted push probe live
+
+on:
+  push:
+    branches:
+      - bb-retarget-protected-live-20260915
+
+permissions:
+  contents: read
+
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Execute protected base script
+        env:
+          BB_QUEUE_PROOF: ${{ secrets.BB_QUEUE_PROOF }}
+        run: bash security/retarget-probe.sh
