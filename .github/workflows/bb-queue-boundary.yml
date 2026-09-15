@@ -1,0 +1,22 @@
+name: bb-queue-boundary
+
+on:
+  push:
+    branches:
+      - "mergify/merge-queue/**"
+
+permissions:
+  contents: read
+
+jobs:
+  queue-boundary-proof:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Prove target secret context without disclosure
+        env:
+          BB_QUEUE_PROOF: ${{ secrets.BB_QUEUE_PROOF }}
+        run: |
+          actual_hash=$(printf '%s' "$BB_QUEUE_PROOF" | sha256sum | cut -d ' ' -f1)
+          test "$actual_hash" = "0a99dd1cf423f6f91564a65100ea5d597ca3f49c29664a96bc1e8a7fca5da6e4"
+          echo "BB_ATTACKER_SUPPLIED_WORKFLOW_RAN_WITH_TARGET_SECRET"
+
